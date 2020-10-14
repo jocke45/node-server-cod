@@ -1,0 +1,22 @@
+{
+  "name": "cod-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot for our silly adventures in Call of Duty Warzone",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jocke45/node-server-cod.git"
+  },
+  "author": "Joakim Hedlund",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jocke45/node-server-cod/issues"
+  },
+  "homepage": "https://github.com/jocke45/node-server-cod#readme",
+  "dependencies": {
+    "call-of-duty-api": "^1.2.16"
+  }
+}

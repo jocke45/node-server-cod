@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
-const commands = require('./commands/commands');
+const commands = require('./commands/help');
 
 // Create the Discord client
 const client = new Discord.Client();
@@ -36,7 +36,7 @@ client.on('message', message => {
     if (!client.commands.has(commandName)) return;
 
     const command = client.commands.get(commandName);
-    // If the commands requires input more than the command and none is provided
+    // If the commands requires input  and none is provided
     // let the user know
     if (command.args && !args.length) {
         return message.reply('Please specify a player ID')

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix, token, cod_bot_activision_password, cod_bot_activision_email } = require('./config.json');
+const { prefix, token } = require('./config.json');
 const commands = require('./commands/commands');
 
 // Create the Discord client

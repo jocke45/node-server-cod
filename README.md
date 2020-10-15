@@ -1,2 +1,2 @@
 # node-server-cod
-A quick node.js server to serve my Python Discord bot with data
+A Discord bot using the Call of Duty Warzone API wrapper to server us data on our Warzone stats

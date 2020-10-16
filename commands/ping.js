@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const login = require('../login');
 
 module.exports = {
     name: 'ping',

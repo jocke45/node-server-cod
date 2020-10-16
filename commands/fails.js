@@ -16,7 +16,6 @@ module.exports = {
                     .setThumbnail('https://img.icons8.com/dusk/64/000000/lol.png')
                     .addFields(
                         { name: `${playerId}`, value: ` has suicided **${data.lifetime.all.properties.suicides}** times...` },
-
                     )
                     .setTimestamp()
                     .setFooter('Icon by Icons8', 'https://icons8.com');

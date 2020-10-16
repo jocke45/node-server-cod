@@ -18,6 +18,8 @@
   "homepage": "https://github.com/jocke45/node-server-cod#readme",
   "dependencies": {
     "call-of-duty-api": "^1.2.16",
-    "discord.js": "^12.3.1"
+    "discord.js": "^12.3.1",
+    "mongodb": "^3.6.2",
+    "promise": "^8.1.0"
   }
 }

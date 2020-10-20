@@ -1,6 +1,4 @@
 config.json
 node_modules
-moredata.js
 handleData.js
 mongoPromise.js
-login.js

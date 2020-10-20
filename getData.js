@@ -25,8 +25,3 @@ async function getLongData(playerId) {
 }
 
 module.exports = { getShortData, getLongData };
-
-/*getLongData('sägpennis#2309').then(playerData => {
-    console.log(playerData.br);
-}).catch((err) => console.log('Err: ' + err))*/
-

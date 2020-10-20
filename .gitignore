@@ -1,4 +1,3 @@
 config.json
 node_modules
-handleData.js
-mongoPromise.js
+test.js

@@ -4,15 +4,17 @@ const mongoose = require('mongoose');
 
 var mongo_uri = `mongodb+srv://COD-BOT:${cod_bot_mongo_db_password}@cluster0.r3yxj.mongodb.net/mydb?retryWrites=true&w=majority`;
 
-mongoose.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 
 var schema = mongoose.Schema({
     _id: String,
+    deaths: Number,
     kdRatio: Number,
     kills: { type: Number, min: [0, "Can't be less than 0"] },
-    wins: { type: Number, min: [0, "Can't be less than 0"] }
+    wins: { type: Number, min: [0, "Can't be less than 0"] },
+    suicides: { type: Number, min: [0, "Can't be less than 0"] }
 });
-var Model = mongoose.model('Model', schema, 'players');
+var Player = mongoose.model('Player', schema, 'players');
 
 async function mongoAddPlayer(playerId, player_data) {
     var db = mongoose.connection;
@@ -23,8 +25,9 @@ async function mongoAddPlayer(playerId, player_data) {
 
     db.on('error', console.error.bind(console, 'MongoDb fucked up:'));
 
-    var player = new Model({
+    var player = new Player({
         _id: `${playerId}`,
+        deaths: player_data.deaths,
         kdRatio: player_data.kdRatio,
         kills: player_data.kills,
         wins: player_data.wins
@@ -34,11 +37,19 @@ async function mongoAddPlayer(playerId, player_data) {
 }
 
 async function mongoFindPlayer(playerId) {
-
+    return await Player.findById(playerId).exec();
 }
 
-async function mongoUpdatePlayer(playerId, json_data) {
+async function mongoUpsertPlayer(playerId, player_data) {
+    let filter = { _id: `${playerId}` };
+    const update = {
+        deaths: player_data.deaths,
+        kdRatio: player_data.kdRatio,
+        kills: player_data.kills,
+        wins: player_data.wins
+    }
 
+    return await Player.findOneAndUpdate(filter, update, { new: true, upsert: true });
 }
 
-module.exports = { mongoAddPlayer, mongoFindPlayer, mongoUpdatePlayer };
+module.exports = { mongoAddPlayer, mongoFindPlayer, mongoUpsertPlayer };

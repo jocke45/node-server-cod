@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const getData = require('../getData.js');
+const handleDb = require('../handleDb.js');
 
 module.exports = {
     name: 'wins',
@@ -9,6 +10,7 @@ module.exports = {
         var playerId = args[0];
         (async () => {
             var data = await getData.getShortData(playerId);
+            var upsert = await handleDb.mongoUpsertPlayer(playerId, data.br);
             const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle('Number of wins')

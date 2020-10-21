@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const getData = require('../getData.js');
+const handleDb = require('../handleDb.js');
 
 module.exports = {
     name: 'kills',

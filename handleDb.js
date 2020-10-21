@@ -17,6 +17,9 @@ var schema = mongoose.Schema({
 var Player = mongoose.model('Player', schema, 'players');
 
 /**
+ * NOTE!
+ * * This function is not used as mongoUpsertPlayer fills the same function and more
+ * !NOTE
  * Adds a specified users to our mongoDB
  * @param playerId the account id of the player to add to the db
  * @param player_data the game data received for the playerId
@@ -24,13 +27,10 @@ var Player = mongoose.model('Player', schema, 'players');
  */
 async function mongoAddPlayer(playerId, player_data) {
     var db = mongoose.connection;
-
     db.once("open", function () {
         console.log("Connection Successful!");
     });
-
     db.on('error', console.error.bind(console, 'MongoDb fucked up:'));
-
     var player = new Player({
         _id: `${playerId}`,
         deaths: player_data.deaths,
@@ -38,7 +38,6 @@ async function mongoAddPlayer(playerId, player_data) {
         kills: player_data.kills,
         wins: player_data.wins
     })
-
     return player.save();
 }
 
@@ -66,8 +65,24 @@ async function mongoUpsertPlayer(playerId, player_data) {
         kills: player_data.kills,
         wins: player_data.wins
     }
-
+    console.log(`Adding data for ${playerId} to database`);
     return await Player.findOneAndUpdate(filter, update, { new: true, upsert: true });
 }
 
-module.exports = { mongoAddPlayer, mongoFindPlayer, mongoUpsertPlayer };
+/**
+ * Adds a specified users data to our mongoDB if it does not exist
+ * otherwise updates the users data
+ * @param playerId the account id of the player to add to the db
+ * @param player_data the game data received for the playerId
+ * @return a promise with the create/update status
+ */
+async function mongoUpsertPlayerFails(playerId, player_data) {
+    let filter = { _id: `${playerId}` };
+    const update = {
+        suicides: player_data.suicides
+    }
+    console.log(`Adding data for ${playerId} to database`);
+    return await Player.findOneAndUpdate(filter, update, { new: true, upsert: true });
+}
+
+module.exports = { mongoAddPlayer, mongoFindPlayer, mongoUpsertPlayer, mongoUpsertPlayerFails };

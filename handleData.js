@@ -16,6 +16,12 @@ var schema = mongoose.Schema({
 });
 var Player = mongoose.model('Player', schema, 'players');
 
+/**
+ * Adds a specified users to our mongoDB
+ * @param playerId the account id of the player to add to the db
+ * @param player_data the game data received for the playerId
+ * @return a promise with the save status
+ */
 async function mongoAddPlayer(playerId, player_data) {
     var db = mongoose.connection;
 
@@ -36,10 +42,22 @@ async function mongoAddPlayer(playerId, player_data) {
     return player.save();
 }
 
+/**
+ * Finds a specified user in our mongoDB using their PK "_id"
+ * @param playerId the account id (also our PK) of the player to find
+ * @return a promise with the find status
+ */
 async function mongoFindPlayer(playerId) {
     return await Player.findById(playerId).exec();
 }
 
+/**
+ * Adds a specified users data to our mongoDB if it does not exist
+ * otherwise updates the users data
+ * @param playerId the account id of the player to add to the db
+ * @param player_data the game data received for the playerId
+ * @return a promise with the create/update status
+ */
 async function mongoUpsertPlayer(playerId, player_data) {
     let filter = { _id: `${playerId}` };
     const update = {

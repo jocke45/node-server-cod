@@ -42,15 +42,6 @@ async function mongoAddPlayer(playerId, player_data) {
 }
 
 /**
- * Finds a specified user in our mongoDB using their PK "_id"
- * @param playerId the account id (also our PK) of the player to find
- * @return a promise with the find status
- */
-async function mongoFindPlayer(playerId) {
-    return await Player.findById(playerId).exec();
-}
-
-/**
  * Adds a specified users data to our mongoDB if it does not exist
  * otherwise updates the users data
  * @param playerId the account id of the player to add to the db
@@ -85,4 +76,38 @@ async function mongoUpsertPlayerFails(playerId, player_data) {
     return await Player.findOneAndUpdate(filter, update, { new: true, upsert: true });
 }
 
-module.exports = { mongoAddPlayer, mongoFindPlayer, mongoUpsertPlayer, mongoUpsertPlayerFails };
+/**
+ * Finds a specified user in our mongoDB using their PK "_id"
+ * @param playerId the account id (also our PK) of the player to find
+ * @return a promise with the find status
+ */
+async function mongoFindPlayer(playerId) {
+    return await Player.findById(playerId).exec();
+}
+
+/**
+ * Finds the top 5 players of the tracked stats in the database
+ * @return a promise with the data
+ */
+async function mongoFindTopWins() {
+    console.log(`Finding data in database`);
+    return await Player.find().sort({ wins: -1 }).limit(5);
+}
+
+/**
+ * Finds the top 5 players of the tracked stats in the database
+ * @return a promise with the data
+ */
+async function mongoFindTopKills() {
+    console.log(`Finding data in database`);
+    return await Player.find().sort({ kills: -1 }).limit(5);
+}
+
+module.exports = {
+    mongoAddPlayer,
+    mongoFindPlayer,
+    mongoUpsertPlayer,
+    mongoUpsertPlayerFails,
+    mongoFindTopWins,
+    mongoFindTopKills
+};

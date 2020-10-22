@@ -7,7 +7,7 @@ module.exports = {
     description: 'Possibly embarrassing stats',
     args: true,
     execute(message, args) {
-        var playerId = args[0];
+        var playerId = args[0].toLowerCase();
         (async () => {
             var data = await getData.getLongData(playerId);
             var upsert = await handleDb.mongoUpsertPlayerFails(playerId, data.lifetime.all.properties);

@@ -7,9 +7,10 @@ module.exports = {
     description: 'How many times have the user killed an enemy in cold blood?',
     args: true,
     execute(message, args) {
-        var playerId = args[0];
+        var playerId = args[0].toLowerCase();
         (async () => {
             var data = await getData.getShortData(playerId);
+            var upsert = await handleDb.mongoUpsertPlayer(playerId, data.br);
             const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle('Number of kills')

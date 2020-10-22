@@ -5,6 +5,7 @@ It servers the channel data on a Battle[]().net users [Call of Duty Warzone](htt
 The bot also saves the data of the users that has run the command in MongoDB to update a leader board.
 The leader board is accessible through the `!leaderboard` command.
 Replies from the bot comes as an "embed", a richer type of message: <img  src="https://i.ibb.co/FD3G741/wins.png"  alt="wins"  border="0">
+
 Big thank you to the project over at the [node Call of Duty API wrapper](https://github.com/lierrmm/Node-CallOfDuty) for providing an easy to use API wrapper.
 
 ## Installation

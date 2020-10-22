@@ -28,6 +28,7 @@ This command both loads data from the CoD API and pushes data to the database. I
 ## Usage
 The commands available and their respective usage is best seen by using the `!help` command.
 This lists all commands and how they are used together with a short but silly description.
+
 <img  src="https://i.ibb.co/nBjBMxD/help.png"  alt="help"  border="0">
 
 ## Screenshots

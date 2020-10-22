@@ -1,8 +1,8 @@
 const getData = require('./getData.js');
-const { cod_bot_mongo_db_password } = require('./config.json');
+const { cod_bot_mongo_db_password, cod_bot_mongo_db_user } = require('./config.json');
 const mongoose = require('mongoose');
 
-var mongo_uri = `mongodb+srv://COD-BOT:${cod_bot_mongo_db_password}@cluster0.r3yxj.mongodb.net/mydb?retryWrites=true&w=majority`;
+var mongo_uri = `mongodb+srv://${cod_bot_mongo_db_user}:${cod_bot_mongo_db_password}@cluster0.r3yxj.mongodb.net/mydb?retryWrites=true&w=majority`;
 
 mongoose.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 

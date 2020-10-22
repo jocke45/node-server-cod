@@ -1,7 +1,7 @@
 # Discord bot for CoD Warzone using node.js
 
 This is a [Discord](https://discord.com/) bot written in Node.js.
-It servers the channel data on a Battle[]().net users [Call of Duty Warzone](https://www.callofduty.com/warzone) career with simple commands.
+It serves the channel data on a Battle[]().net users [Call of Duty Warzone](https://www.callofduty.com/warzone) career with simple commands.
 The bot also saves the data of the users that has run the command in MongoDB to update a leader board.
 The leader board is accessible through the `!leaderboard` command.
 Replies from the bot comes as an "embed", a richer type of message: <img  src="https://i.ibb.co/FD3G741/wins.png"  alt="wins"  border="0">

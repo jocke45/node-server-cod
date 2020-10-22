@@ -15,7 +15,7 @@ module.exports = {
         // Loop over all commands and print their description
         commands.forEach(cmd => {
             let tempName = cmd.name;
-            if (cmd.args) tempName += ' *player_id*';
+            if (cmd.args) tempName += ' <player_id>';
             embed.addField(`!${tempName}`, `${cmd.description}`);
         });
         return message.channel.send(embed)

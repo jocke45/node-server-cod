@@ -1,7 +1,8 @@
 {
-	"prefix": "!",
-	"token": "Your Discord bot token",
-    "cod_bot_activision_password" : "SuperSecretPassword123",
-    "cod_bot_activision_email" : "something@mail.com"
-    
+    "prefix": "!",
+    "token": "Your Discord bot token",
+    "cod_bot_activision_password": "SuperSecretPassword123",
+    "cod_bot_activision_email": "something@mail.com",
+    "cod_bot_mongo_db_user": "mongoDBUsername",
+    "cod_bot_mongo_db_password": "SuperSecretPassword123"
 }

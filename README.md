@@ -20,8 +20,9 @@ To use this bot you need:
 #### Yes, I have all of that already. How do I install?
 1. Clone this repository to a folder.
 2. Enter the values of your Activision, Discord bot and MongoDB accounts in the file called "config_EXAMPLE.json".
-3. Open the folder with your favorite command line tool and run the command `node server.js`
-4. The server will reply with a "Ready!" when it is ready.
+3. Open the folder with your favorite command line tool and run the command `npm install`
+4. After that is done run the command `node server.js`
+5. The server will reply with a "Ready!" when it is ready.
 
 To test that everything is working I suggest that you type in `!wins <player_id>`.
 This command both loads data from the CoD API and pushes data to the database. If you get no error there you should be good to go!

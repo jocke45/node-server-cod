@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: 'help',
-    description: 'List all available commands and how to use',
+    description: 'List all available commands and how to use them',
     args: false,
     execute(message, args) {
         const { commands } = message.client;

@@ -9,7 +9,17 @@ module.exports = {
     execute(message, args) {
         var playerId = args[0].toLowerCase();
         (async () => {
-            var data = await getData.getLongData(playerId);
+            try {
+                var data = await getData.getLongData(playerId);
+            }
+            catch (error) {
+                console.log(error);
+                const errorCode = error.slice(0, 3)
+                if (errorCode == '404') {
+                    return message.reply("Player ID not found. Did you spell that correctly?");
+                }
+                return message.reply("Something went wrong. Error code: " + errorCode);
+            }
             var upsert = await handleDb.mongoUpsertPlayerFails(playerId, data.lifetime.all.properties);
             const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
